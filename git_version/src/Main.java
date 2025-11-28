@@ -3,5 +3,6 @@ public class Main {
         // роба
         System.out.println("Hello World!");
         System.out.println("Hello World!"); // проба
+
     }
 }
