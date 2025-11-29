@@ -1,4 +1,4 @@
-package bigDecimal_3;
+package objectTypes_2.bigDecimal_3;
 
 import java.math.BigDecimal;
 
