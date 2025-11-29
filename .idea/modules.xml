@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AdvancedJava!.iml" filepath="$PROJECT_DIR$/.idea/AdvancedJava!.iml" />
-      <module fileurl="file://$PROJECT_DIR$/git_version/git_version.iml" filepath="$PROJECT_DIR$/git_version/git_version.iml" />
     </modules>
   </component>
 </project>
