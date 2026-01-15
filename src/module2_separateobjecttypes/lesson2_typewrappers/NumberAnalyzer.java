@@ -1,4 +1,4 @@
-package module2.separateObjectTypes.lesson2.WrapperTypes;
+package module2_separateobjecttypes.lesson2_typewrappers;
 
 import lombok.Getter;
 

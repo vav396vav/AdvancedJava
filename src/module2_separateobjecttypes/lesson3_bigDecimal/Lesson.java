@@ -1,4 +1,4 @@
-package lesson3.bigDecimalмодуль;
+package module2_separateobjecttypes.lesson3_bigDecimal;
 
 import java.math.BigDecimal;
 
