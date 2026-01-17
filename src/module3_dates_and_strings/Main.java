@@ -26,9 +26,9 @@ public class Main {
         // Сравниваем даты
         LocalDate date1 = LocalDate.of(2021, 1, 1);
         LocalDate date2 = LocalDate.of(2021, 1, 1);
-        boolean isAfter = date1.isAfter(date2);
-        boolean isBefore = date1.isBefore(date2);
-        boolean isEqual = date1.isEqual(date2);
+        boolean isAfter = date1.isAfter(date2); // после этого
+        boolean isBefore = date1.isBefore(date2); // до этого
+        boolean isEqual = date1.isEqual(date2); // равны
 
         // Создаем форматтер даты
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");

@@ -1,4 +1,4 @@
-package module3_dates_and_strings.lesson2_date;
+package module3_dates_and_strings.lesson2_date.birthday;
 
 import java.util.Scanner;
 
