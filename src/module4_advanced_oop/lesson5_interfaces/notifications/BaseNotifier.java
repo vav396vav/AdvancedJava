@@ -1,15 +1,17 @@
 package module4_advanced_oop.lesson5_interfaces.notifications;
 
+
 public abstract class BaseNotifier implements Notifier {
     protected String name;
 
-    public BaseNotifier(String name) {
+    protected BaseNotifier(String name) {
         this.name = name;
     }
 
-    public abstract String sendNotification();
+    @Override
+    public abstract void sendNotification(String recipient, String message);
 
-    private String log(String msg){
+    protected String log(String msg){
         return "Имя: " + name + ", Сообщение: " + msg;
     }
 }
