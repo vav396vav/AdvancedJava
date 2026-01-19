@@ -33,7 +33,7 @@ public class MeetingSchedule {
 
 
     // Находим ближайший четверг
-    private static LocalDate nearThursday(LocalDate date){
+    private static LocalDate nearThursday(LocalDate date) {
         LocalDate nextDay = date;
         while (!(nextDay.getDayOfWeek().equals(DayOfWeek.THURSDAY))){
             nextDay = nextDay.plusDays(1);
