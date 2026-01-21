@@ -9,4 +9,8 @@ public abstract class BasePayment implements Payable {
 
     @Override
     public abstract String getPaymentType();
+
+    protected void log(String msg){
+        System.out.println("Payment " + msg);
+    }
 }
