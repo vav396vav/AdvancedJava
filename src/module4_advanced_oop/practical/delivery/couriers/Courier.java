@@ -1,5 +1,6 @@
 package module4_advanced_oop.practical.delivery.couriers;
 
+import lombok.Getter;
 import module4_advanced_oop.practical.delivery.interfaces.Movable;
 
 /**
@@ -7,7 +8,12 @@ import module4_advanced_oop.practical.delivery.interfaces.Movable;
  * Нельзя создать просто "Courier", только его подвиды.
  */
 public abstract class Courier implements Movable {
+    /**
+     * -- GETTER --
+     *  Возвращает имя курьера.
+     */
     // Имя курьера (например, "Иван")
+    @Getter
     protected String name;
 
     // Сколько единиц пути он проходит за один ход
@@ -42,10 +48,4 @@ public abstract class Courier implements Movable {
         return position;
     }
 
-    /**
-     * Возвращает имя курьера.
-     */
-    public String getName() {
-        return name;
-    }
 }
