@@ -1,16 +1,14 @@
 package module2_separateobjecttypes.lesson2_typewrappers;
 
-
-
 import lombok.Getter;
 
 import java.util.Objects;
 import java.util.Scanner;
 @Getter
 public class NumberAnalyzer {
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
 
-    private Integer number;
+    private final Integer number;
 
     public NumberAnalyzer(){
         System.out.print("Введите число: ");
