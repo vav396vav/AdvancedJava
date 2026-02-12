@@ -23,6 +23,7 @@ public class AddressBook {
         for(int i = 0; i < MAX_SIZE; i++) {
             if(contacts[i].getName().trim().equalsIgnoreCase(name.trim())){
                 System.out.println("Такой пользователь уже существует.");
+
             }
         }
     }
