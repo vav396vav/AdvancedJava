@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!--
+        АППЕНДЕР ДЛЯ УРОВНЯ INFO
+        Назначение: запись информационных сообщений (например, старт приложения, успешные операции)
+        Куда пишет: в файл stdout.log в корне проекта
+        Фильтр: принимает ТОЛЬКО сообщения уровня INFO, всё остальное отклоняется
+    -->
+    <appender name="STDOUT_FILE" class="ch.qos.logback.core.FileAppender">
+        <!-- Путь к файлу лога -->
+        <file>stdout.log</file>
+
+        <!-- Формат записи: время, поток, уровень, имя класса, сообщение -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+        <!-- Фильтр по уровню: только INFO -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>   <!-- Если уровень совпадает — принять -->
+            <onMismatch>DENY</onMismatch> <!-- Если не совпадает — отклонить -->
+        </filter>
+    </appender>
+
+    <!--
+        АППЕНДЕР ДЛЯ УРОВНЯ ERROR
+        Назначение: запись ошибок (исключения, критические сбои)
+        Куда пишет: в файл stderr.log
+        Фильтр: принимает ТОЛЬКО сообщения уровня ERROR
+    -->
+    <appender name="STDERR_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>stderr.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!--
+        АППЕНДЕР ДЛЯ УРОВНЯ DEBUG
+        Назначение: отладочная информация (только для разработки)
+        Куда пишет: в консоль (видно в IDE при запуске)
+        Фильтр: принимает ТОЛЬКО сообщения уровня DEBUG
+    -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!--
+        КОРНЕВОЙ ЛОГГЕР
+        Уровень "DEBUG" означает: пропускать ВСЕ сообщения (DEBUG, INFO, WARN, ERROR)
+        Все три аппендера подключены — каждый сам решит, писать ли сообщение (через свой фильтр)
+    -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT_FILE" />
+        <appender-ref ref="STDERR_FILE" />
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>

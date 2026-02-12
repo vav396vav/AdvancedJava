@@ -1,5 +1,10 @@
 package practical_basics;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Contact {
     private String name;
     private String position;
@@ -8,56 +13,14 @@ public class Contact {
     private String email;
 
     public Contact(String name,String position,int dateOfBirth, int phone, String email) {
-        if (!name.isEmpty()) {
-            this.name = name;
-        }
-        if (!position.isEmpty()){
-            this.position = name;
+        if (name.isEmpty() || position.isEmpty()){
+            throw new IllegalArgumentException("Поля не должны быть пустыми");
         }
         this.dateOfBirth = dateOfBirth;
         this.phone = phone;
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public int getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(int dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @Override
     public String toString() {

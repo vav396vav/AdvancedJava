@@ -1,25 +1,28 @@
 package practical_basics;
 
-public class AddressBook {
-    int size = 1;
-    int id;
-    Contact[] contacts = new Contact[size];
+import java.util.Scanner;
 
-    public void addContact(Contact contact){
-        if (contacts.length > size){
-            System.out.println("Адресная книга полная!");
-        }
-        for (int i = 0; i < contacts.length; i++){
-            if(contacts[i] == contact){
-                System.out.println("Пользователь " + contact.getName() + " уже присутствует в списке\n" +
-                        "контактов, он будет обновлён в соответствии с новыми данными.");
-                contacts[i] = contact;
-                System.out.println("Контакт успешно обновлён!");
-            }
-            if (contacts[i] == null){
-                contacts[i] = contact;
-                id = i;
-                System.out.println("Контакт был успешно добавлен!");
+public class AddressBook {
+    private int MAX_SIZE = 10;
+    private Scanner scanner;
+    private Contact[] contacts;
+    private int size;
+    private int id;
+
+    public AddressBook() {
+        this.scanner = new Scanner(System.in);
+        this.contacts = new Contact[MAX_SIZE];
+        this.size = 0;
+    }
+
+    public void addContact(){
+        System.out.println("Новый контакт...");
+        System.out.print("Ведете Фамилию, Имя, Отчество: ");
+        String name = scanner.nextLine();
+
+        for(int i = 0; i < MAX_SIZE; i++) {
+            if(contacts[i].getName().trim().equalsIgnoreCase(name.trim())){
+                System.out.println("Такой пользователь уже существует.");
             }
         }
     }
