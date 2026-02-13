@@ -6,6 +6,7 @@ public class MenuNavigator {
     private final Scanner scanner = new Scanner(System.in);
     private final AddressBook addressBook;
 
+
     public MenuNavigator(AddressBook addressBook) {
         this.addressBook = addressBook;
     }

@@ -8,6 +8,7 @@ public class AddressBook {
     private Contact[] contacts;
     private int size;
     private int id;
+    private MenuNavigator navigator;
 
     public AddressBook() {
         this.scanner = new Scanner(System.in);
@@ -23,7 +24,14 @@ public class AddressBook {
         System.out.println("Новый контакт...");
         System.out.print("Ведете Фамилию, Имя, Отчество: ");
         String name = scanner.nextLine();
-//        boolean newName = nameCheck(name);
+        int idName = nameCheck(name);
+        if (idName >= 0) {
+            System.out.println("Такой пользователь уже существует." +
+                    "хотите изменить его данные? 1 - да/0 - нет");
+            int answer = Integer.parseInt(scanner.nextLine());
+
+            if(answer == 0) return;
+        }
         System.out.print("Введите должность: ");
         String position = scanner.nextLine();
         System.out.print("Введите дату рождения: ");
@@ -35,16 +43,8 @@ public class AddressBook {
 
         Contact newContact = new Contact(name, position, dateOfBirth, phone, email);
 
-        for (int i = 0; i < size; i++) {
-            Contact contact = contacts[i];
-            if (contact != null) {
-                String existingName = contact.getName();
-                if (existingName != null && existingName.trim().equalsIgnoreCase(name.trim())) {
-                    contacts[i] = newContact;
-                    System.out.println("Контакт обновлён.");
-                    return;
-                }
-            }
+        if (idName >= 0){
+            contacts[idName] = newContact;
         }
 
         contacts[size] = newContact;
@@ -52,32 +52,44 @@ public class AddressBook {
         System.out.println("Добавлен новый Контакт." + "\n");
     }
 
-//    public boolean nameCheck(String name){
-//
-//    }
+    public int nameCheck(String name) {
+        for (int i = 0; i < size; i++) {
+            Contact contact = contacts[i];
+            if (contact != null) {
+                String existingName = contact.getName();
+                if (existingName != null && existingName.trim().equalsIgnoreCase(name.trim())) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
 
     public void deleteContact() {
         displayAllContacts();
 
-        for (int i = 0; i < size; i++){
-            if (i == id){
+
+
+        for (int i = 0; i < size; i++) {
+            if (i == id) {
                 contacts[i] = null;
                 System.out.println("Контакт с ID: " + id + " удалён.");
             }
-            if (contacts[i] == null){
+            if (contacts[i] == null) {
                 contacts[i] = contacts[i + 1];
             }
             System.out.println("Контакт с ID: " + id + "Не найден.");
         }
     }
 
-    public void displayAllContacts(){
-        if (size == 0){
+    public void displayAllContacts() {
+        if (size == 0) {
             System.out.println("Адресная книга пуста!");
+            return;
         }
         System.out.println("Контакты адресной книги: ");
         for (int i = 0; i < size; i++) {
-            System.out.println("ID: " + i + "\n"+ contacts [i]);
+            System.out.println("ID: " + i + "\n" + contacts[i]);
         }
     }
 }
